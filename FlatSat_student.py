@@ -32,11 +32,6 @@ accel_gyro = LSM6DS(i2c)
 mag = LIS3MDL(i2c)
 picam2 = Picamera2()
 
-#change directory
-import os
-os.chdir ("/home/pi/images")
-
-
 def git_push():
     """
     This function is complete. Stages, commits, and pushes new images to your GitHub repo.
@@ -85,7 +80,7 @@ def take_photo():
             picam2.start_preview(Preview.NULL)
             picam2.start()
             time.sleep(2)
-            picam2.capture_file(img_gen(name))
+            picam2.capture_file("../images/" + img_gen(name))
             picam2.stop()
             picam2.stop_preview()
         
