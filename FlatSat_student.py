@@ -84,7 +84,6 @@ def take_photo():
             picam2.capture_file(img_gen(name))
             picam2.stop()
             picam2.stop_preview()
-            git_push()
         
         time.sleep(2)
 
