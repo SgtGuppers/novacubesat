@@ -76,7 +76,7 @@ def take_photo():
             time.sleep(2)
             name = "ayoubM"
 
-            pi2cam.start_and_capture_file(img_gen(name))
+            picam2.start_and_capture_file(img_gen(name))
 
             git_push()
         
