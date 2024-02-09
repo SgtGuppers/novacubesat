@@ -23,7 +23,7 @@ from picamera2 import Picamera2, Preview
 
 #VARIABLES
 THRESHOLD = 1      #Any desired value from the accelerometer
-REPO_PATH = "/home/pi/flatsat"     #Your github repo path: ex. /home/pi/FlatSatChallenge
+REPO_PATH = "/home/pi/flatsat/novacubesat"     #Your github repo path: ex. /home/pi/FlatSatChallenge
 FOLDER_PATH = "/Images"   #Your image folder path in your GitHub repo: ex. /Images
 
 #imu and camera initialization
@@ -82,7 +82,8 @@ def take_photo():
             picam2.start()
             time.sleep(2)
             picam2.capture_file("test.jpg")
-
+            picam2.stop()
+            picam2.stop_preview()
             git_push()
         
         time.sleep(2)
