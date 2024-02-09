@@ -32,6 +32,10 @@ accel_gyro = LSM6DS(i2c)
 mag = LIS3MDL(i2c)
 picam2 = Picamera2()
 
+#change directory
+import os
+os.chdir ("/home/pi/images")
+
 
 def git_push():
     """
