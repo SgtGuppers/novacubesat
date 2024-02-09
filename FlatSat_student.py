@@ -75,7 +75,9 @@ def take_photo():
         if(abs(accelx) >= THRESHOLD or abs(accely) >= THRESHOLD or abs(accelz) >= THRESHOLD):
             time.sleep(2)
             name = "ayoubM"
-            picam2.start_and_capture_file(img_gen(name))
+
+            pi2cam.start_and_capture_file(img_gen(name))
+
             git_push()
         
         time.sleep(2)
