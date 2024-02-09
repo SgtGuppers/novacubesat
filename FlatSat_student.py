@@ -22,9 +22,9 @@ from git import Repo
 from picamera2 import Picamera2
 
 #VARIABLES
-THRESHOLD = 0      #Any desired value from the accelerometer
-REPO_PATH = ""     #Your github repo path: ex. /home/pi/FlatSatChallenge
-FOLDER_PATH = ""   #Your image folder path in your GitHub repo: ex. /Images
+THRESHOLD = 1      #Any desired value from the accelerometer
+REPO_PATH = "/home/pi/flatsat"     #Your github repo path: ex. /home/pi/FlatSatChallenge
+FOLDER_PATH = "/Images"   #Your image folder path in your GitHub repo: ex. /Images
 
 #imu and camera initialization
 i2c = board.I2C()
@@ -72,13 +72,13 @@ def take_photo():
     while True:
         accelx, accely, accelz = accel_gyro.acceleration
 
-        #CHECKS IF READINGS ARE ABOVE THRESHOLD
-            #PAUSE
-            #name = ""     #First Name, Last Initial  ex. MasonM
-            #TAKE PHOTO
-            #PUSH PHOTO TO GITHUB
+        if(abs(accelx) >= THRESHOLD or abs(accely) >= THRESHOLD or abs(accelz) >= THRESHOLD):
+            time.sleep(2)
+            name = "ayoubM"
+            pic2cam.start_and_capture_file(img_gen(name))
+            git_push()
         
-        #PAUSE
+        time.sleep(2)
 
 
 def main():
