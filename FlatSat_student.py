@@ -74,14 +74,14 @@ def take_photo():
 
         if(abs(accelx) >= THRESHOLD or abs(accely) >= THRESHOLD or abs(accelz) >= THRESHOLD):
             time.sleep(2)
-            name = "ayoubM"
+            name = "NOVA"
 
             camera_config = picam2.create_preview_configuration()
             picam2.configure(camera_config)
             picam2.start_preview(Preview.NULL)
             picam2.start()
             time.sleep(2)
-            picam2.capture_file("test.jpg")
+            picam2.capture_file(img_gen(name))
             picam2.stop()
             picam2.stop_preview()
             git_push()
