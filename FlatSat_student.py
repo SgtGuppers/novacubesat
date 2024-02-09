@@ -31,6 +31,7 @@ i2c = board.I2C()
 accel_gyro = LSM6DS(i2c)
 mag = LIS3MDL(i2c)
 picam2 = Picamera2()
+i = 0
 
 def git_push():
     """
@@ -74,7 +75,10 @@ def take_photo():
         if(abs(accelx) >= THRESHOLD or abs(accely) >= THRESHOLD or abs(accelz) >= THRESHOLD):
             time.sleep(2)
             name = "NOVA"
-
+            i = i + 1
+            if(i > 5){
+                exit()
+            }
             camera_config = picam2.create_preview_configuration()
             picam2.configure(camera_config)
             picam2.start_preview(Preview.NULL)
